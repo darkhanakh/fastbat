@@ -9,8 +9,8 @@ fn main() {
     let filename = &args[1];
     match std::fs::read_to_string(filename) {
         Ok(contents) => {
-            for line in contents.lines() {
-                println!("{}", line);
+            for (line_number, line) in contents.lines().enumerate() {
+                println!("{:>4}: {}", line_number + 1, line);
             }
         }
         Err(e) => {
